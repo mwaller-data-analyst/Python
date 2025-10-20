@@ -1,0 +1,82 @@
+Available Customizations
+
+Headings:
+
+Use # for level-1 headings (largest), ## for level-2, ### for level-3, etc.
+Example: # Big Title vs. ### Smaller Subtitle.
+This is the primary way to vary text size perception.
+
+
+Bold and Italic:
+
+Bold: **text** or __text__ (e.g., Mark Wallier).
+Italic: *text* or _text_ (e.g., portfolio).
+Combine: **_bold and italic_** (e.g., highlight).
+
+
+Hyperlinks:
+
+[Text](URL) (e.g., [GitHub](https://github.com) or [Email](mailto:mark.e.wallier@gmail.com)).
+Useful for contact info or project links.
+
+
+Code Blocks:
+
+Inline: `code` (e.g., python preprocess.py).
+Block: ```python
+pythonprint("Hello, GitHub!")
+
+
+Lists:
+
+Unordered: - item or * item (e.g., - Feature 1).
+Ordered: 1. item (e.g., 1. Step one).
+Nested: Add two spaces before - or 1. for sub-items.
+
+
+Tables:
+
+Use  to create columns, with - for headers:
+markdown| Feature       | Status  |
+|---------------|---------|
+| Data Cleaning | Done    |
+| Visualization | In Progress |
+Renders as:
+
+
+FeatureStatusData CleaningDoneVisualizationIn Progress
+
+
+Images:
+
+![Alt Text](URL) (e.g., ![Demo](demo/screenshot.png)).
+Upload images to your repo (e.g., in a demo/ folder) and link them.
+
+
+Badges:
+
+Add dynamic badges like build status or license:
+markdown[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+(You’d need to host the badge image URL—check shields.io for options.)
+
+
+Quotes:
+
+Use > for a blockquote:
+text> This is a cool project!
+Renders as:
+
+This is a cool project!
+
+
+Task Lists:
+
+- [ ] Todo or - [x] Done (e.g., - [ ] Add features, - [x] Write README).
+Useful for tracking progress.
+
+
+Limitations
+
+Font Size/Style: GitHub’s Markdown doesn’t support custom font sizes (e.g., <h1> tags won’t work as HTML is restricted). Headings are your best bet for size variation.
+Colors: No direct color control—use bold/italics or emojis (e.g., :rocket:) for emphasis.
+Advanced Styling: HTML is limited; avoid <font> or <style> tags—they won’t render.
