@@ -1,0 +1,36 @@
+CryptoTrend - Top 10 Trending Cryptocurrencies
+A Python script that fetches and visualizes the top 10 trending cryptocurrencies over the past 24 hours using the CoinGecko API.
+Features
+
+Retrieves real-time data for the top 10 trending cryptocurrencies.
+Displays names, symbols, current prices in USD, and 24-hour price change percentages.
+Generates a bar chart to visualize 24-hour price changes.
+
+Installation
+
+Clone the repository:
+git clone https://github.com/your-username/CryptoTrend.git
+
+Navigate to the project folder:
+cd CryptoTrend
+
+Install required dependencies:
+pip install requests pandas matplotlib
+
+Usage
+Run the script to fetch and plot the trending cryptocurrencies:
+python crypto_trend.py
+
+The script will print a table of the top 10 coins with their details.
+A bar chart will display the 24-hour price change percentages.
+
+Requirements
+
+Python 3.8+
+Libraries: requests, pandas, matplotlib
+
+Demo
+(Note: Upload a screenshot of the bar chart to a demo/ folder and update the path accordingly.)
+
+Contributing
+Suggestions or improvements? Open an issue or submit a pull request!
