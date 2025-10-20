@@ -1,1 +1,5 @@
+Tesla FSD files drive - Projection (estimate only)
+
+A Python script that uses the June 2025 approximate value of 4.5 billion miles driven by Tesla FSD and
+using an estimated 40% increase is miles driven, forcasts what the FSD miles could be by June 2025.
 
