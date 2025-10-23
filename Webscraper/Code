@@ -1,0 +1,39 @@
+#This code can be used for webscraping.
+
+import requests
+from bs4 import BeautifulSoup
+
+# URL to scrape (Target's main page)
+url = "https://www.target.com/"  # Note: Added 'www' for consistency—try without if needed
+
+# Headers to mimic a real browser (key fix for 403 errors)
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+}
+
+# Send a GET request with headers
+response = requests.get(url, headers=headers)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content with BeautifulSoup
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Example 1: Extract all article headlines (assuming they use <h2> tags)
+    headlines = soup.find_all('h2')
+    print("Headlines/Sections:")
+    for i, headline in enumerate(headlines, 1):
+        print(f"{i}. {headline.text.strip()}")
+    
+    # Example 2: Extract all links on the page (limited to first 10 for brevity)
+    links = soup.find_all('a')[:10]  # Slice to avoid flooding output
+    print("\nSample Links:")
+    for i, link in enumerate(links, 1):
+        href = link.get('href')
+        if href:
+            # Make relative links absolute for usefulness
+            full_href = href if href.startswith('http') else url + href
+            print(f"{i}. {full_href}")
+else:
+    print(f"Failed to retrieve page. Status code: {response.status_code}")
+    print(f"Response headers (for debugging): {response.headers}")
