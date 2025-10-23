@@ -1,0 +1,72 @@
+#This code will generate a WiFi QR code and save it as an image file.
+#Run pip install qrcode & pillow prior to executing the following code.
+import qrcode
+from pathlib import Path
+
+def generate_wifi_qrcode(
+    ssid: str,
+    password: str,
+    security_type: str,
+    qr_code_file: str
+) -> None:
+    """
+    Generate a WiFi QR code and save it as an image file.
+    
+    Args:
+        ssid: WiFi network name (SSID)
+        password: WiFi password
+        security_type: Security type (e.g., WPA, WEP, or blank for no password)
+        qr_code_file: Path to save the QR code image
+    """
+    # Format WiFi data string
+    wifi_data = f"WIFI:T:{security_type};S:{ssid};P:{password};;"
+    
+    # Create QR code instance
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    
+    # Add WiFi data and generate QR code
+    qr.add_data(wifi_data)
+    qr.make(fit=True)
+    
+    # Create and save QR code image
+    qr_code_image = qr.make_image(fill_color="black", back_color="white").convert("RGB")
+    qr_code_image.save(qr_code_file)
+    print(f"QR code saved to {qr_code_file}")
+
+def main():
+    # Define output path
+    output_dir = Path(r"C:\Users\persp\Documents\Programming to files")
+    qr_code_file = output_dir / "wifi_qr.png"
+    
+    # Ensure output directory exists
+    try:
+        output_dir.mkdir(parents=True, exist_ok=True)
+    except PermissionError:
+        print(f"Error: No permission to create directory {output_dir}")
+        return
+    
+    # Get WiFi details from user
+    ssid = input("Enter WiFi name (SSID): ")
+    password = input("Enter WiFi password: ")
+    security_type = input("Enter security type (e.g., WPA, WEP, or leave blank for none): ").upper() or "WPA"
+    
+    # Generate QR code
+    try:
+        generate_wifi_qrcode(
+            ssid=ssid,
+            password=password,
+            security_type=security_type,
+            qr_code_file=qr_code_file
+        )
+    except PermissionError:
+        print(f"Error: No permission to write to {qr_code_file}")
+    except Exception as e:
+        print(f"Error generating QR code: {e}")
+
+if __name__ == "__main__":
+    main()
